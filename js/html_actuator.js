@@ -46,6 +46,22 @@ HTMLActuator.prototype.clearContainer = function (container) {
   }
 };
 
+var exponentialChineseMap = {
+  '2': '二',
+  '4': '四',
+  '8': '八',
+  '16': '十六',
+  '32': '三十二',
+  '64': '六十四',
+  '128': '一百二十八',
+  '256': '二百五十六',
+  '512': '五百一十二',
+  '1024': '一千二十四',
+  '2048': '二千四十八',
+  '4096': '四千九十六',
+  '8192': '八千一百九十二'
+};
+
 HTMLActuator.prototype.addTile = function (tile) {
   var self = this;
 
@@ -62,7 +78,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
+  inner.textContent = exponentialChineseMap[tile.value] || tile.value;
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
